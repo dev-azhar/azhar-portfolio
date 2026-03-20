@@ -37,13 +37,33 @@ function createTextTexture(text: string, bgColor: string, textColor: string) {
   ctx.arc(256, 256, 256, 0, Math.PI * 2);
   ctx.fill();
 
+  // Subtle ring
+  ctx.strokeStyle = textColor;
+  ctx.globalAlpha = 0.12;
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.arc(256, 256, 240, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+
   // Text
   ctx.fillStyle = textColor;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  const fontSize = text.length > 8 ? 60 : text.length > 5 ? 75 : 90;
-  ctx.font = `700 ${fontSize}px "Geist", "SF Pro", "Segoe UI", sans-serif`;
-  ctx.fillText(text, 256, 256);
+
+  const lines = text.split("\n");
+  const fontSize = text.length > 8 ? 58 : text.length > 5 ? 70 : 85;
+  ctx.font = `600 ${fontSize}px "Space Grotesk", "SF Pro", "Segoe UI", sans-serif`;
+
+  if (lines.length > 1) {
+    const lineHeight = fontSize * 1.2;
+    const startY = 256 - ((lines.length - 1) * lineHeight) / 2;
+    lines.forEach((line, i) => {
+      ctx.fillText(line, 256, startY + i * lineHeight);
+    });
+  } else {
+    ctx.fillText(text, 256, 256);
+  }
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
