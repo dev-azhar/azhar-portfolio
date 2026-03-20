@@ -10,23 +10,64 @@ import {
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
+import { smoother } from "./Navbar";
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
   "/images/typescript.webp",
   "/images/javascript.webp",
+  "/images/react2.webp",
+  "/images/node2.webp",
+  "/images/next2.webp",
+  "/images/mongo.webp",
+  "/images/mysql.webp",
+  "/images/express.webp",
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
+const imageTextures = imageUrls.map((url) => textureLoader.load(url));
+
+function createTextTexture(text: string, bgColor: string, textColor: string) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 512;
+  const ctx = canvas.getContext("2d")!;
+
+  // Background circle fill
+  ctx.fillStyle = bgColor;
+  ctx.beginPath();
+  ctx.arc(256, 256, 256, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Text
+  ctx.fillStyle = textColor;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  const fontSize = text.length > 8 ? 60 : text.length > 5 ? 75 : 90;
+  ctx.font = `700 ${fontSize}px "Geist", "SF Pro", "Segoe UI", sans-serif`;
+  ctx.fillText(text, 256, 256);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+  return texture;
+}
+
+const aiTextTextures = [
+  createTextTexture("Python", "#3776AB", "#FFD43B"),
+  createTextTexture("PyTorch", "#EE4C2C", "#ffffff"),
+  createTextTexture("LLM", "#0f1729", "#5eead4"),
+  createTextTexture("RAG", "#7c3aed", "#ffffff"),
+  createTextTexture("Lang\nChain", "#1C3C3C", "#22d3ee"),
+  createTextTexture("OpenAI", "#10a37f", "#ffffff"),
+  createTextTexture("HF", "#FFD21E", "#000000"),
+  createTextTexture("FastAPI", "#009688", "#ffffff"),
+  createTextTexture("CrewAI", "#FF6B35", "#ffffff"),
+  createTextTexture("TF", "#FF6F00", "#ffffff"),
+];
+
+const textures = [...imageTextures, ...aiTextTextures];
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
-const spheres = [...Array(30)].map(() => ({
+const spheres = [...Array(36)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
 
@@ -128,12 +169,13 @@ const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
+    const workEl = document.getElementById("work");
+    if (!workEl) return;
+
     const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const threshold = document
-        .getElementById("work")!
-        .getBoundingClientRect().top;
-      setIsActive(scrollY > threshold);
+      const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+      const workTop = workEl.offsetTop;
+      setIsActive(scrollY > workTop - window.innerHeight);
     };
     document.querySelectorAll(".header a").forEach((elem) => {
       const element = elem as HTMLAnchorElement;
@@ -147,8 +189,20 @@ const TechStack = () => {
       });
     });
     window.addEventListener("scroll", handleScroll);
+    // Also listen to smooth-content transform changes
+    const smoothContent = document.getElementById("smooth-content");
+    const observer = smoothContent
+      ? new MutationObserver(handleScroll)
+      : null;
+    if (smoothContent && observer) {
+      observer.observe(smoothContent, {
+        attributes: true,
+        attributeFilter: ["style"],
+      });
+    }
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      observer?.disconnect();
     };
   }, []);
   const materials = useMemo(() => {
@@ -193,7 +247,7 @@ const TechStack = () => {
             <SphereGeo
               key={i}
               {...props}
-              material={materials[Math.floor(Math.random() * materials.length)]}
+              material={materials[i % materials.length]}
               isActive={isActive}
             />
           ))}

@@ -1,5 +1,5 @@
-/* ── Work Section ── */
-.work-section {
+/* ── Hobbies Section ── */
+.hobbies-section {
   position: relative;
   z-index: 1;
   background-color: var(--backgroundColor);
@@ -7,7 +7,7 @@
 }
 
 /* ── Label chip ── */
-.work-label {
+.hobbies-label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -23,21 +23,21 @@
   border: 1px solid rgba(94, 234, 212, 0.12);
 }
 
-.work-label-dot {
+.hobbies-label-dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background: var(--accentColor);
   box-shadow: 0 0 6px var(--accentColor);
-  animation: workDotPulse 2s ease-in-out infinite;
+  animation: hobbyDotPulse 2s ease-in-out infinite;
 }
 
-@keyframes workDotPulse {
+@keyframes hobbyDotPulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
 
-.work-section h2 {
+.hobbies-section h2 {
   font-family: "Space Grotesk", sans-serif;
   font-size: 58px;
   font-weight: 500;
@@ -50,16 +50,16 @@
   color: transparent;
 }
 
-.work-section h2>span {
+.hobbies-section h2 > span {
   -webkit-text-fill-color: var(--accentColor);
 }
 
-.work-container {
+.hobbies-container {
   margin: auto;
 }
 
 /* ── Liquid Glass Wrapper ── */
-.work-glass {
+.hobby-glass {
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.04) 0%,
@@ -80,7 +80,7 @@
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.work-glass::before {
+.hobby-glass::before {
   content: "";
   position: absolute;
   top: 0;
@@ -96,7 +96,7 @@
   z-index: 1;
 }
 
-.work-glass::after {
+.hobby-glass::after {
   content: "";
   position: absolute;
   top: 0;
@@ -113,7 +113,7 @@
   pointer-events: none;
 }
 
-.work-glass:hover {
+.hobby-glass:hover {
   border-color: rgba(94, 234, 212, 0.15);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.06) inset,
@@ -122,46 +122,46 @@
 }
 
 /* ── Carousel ── */
-.carousel-wrapper {
+.hobby-carousel-wrapper {
   position: relative;
   width: 100%;
 }
 
-.carousel-track-container {
+.hobby-track-container {
   overflow: hidden;
   width: 100%;
   border-top: 1px solid rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.carousel-track {
+.hobby-track {
   display: flex;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
-.carousel-slide {
+.hobby-slide {
   min-width: 100%;
   flex-shrink: 0;
   box-sizing: border-box;
   padding: 50px 0;
 }
 
-.carousel-content {
+.hobby-content {
   display: flex;
   align-items: center;
   gap: 60px;
   width: 100%;
 }
 
-.carousel-info {
+.hobby-info {
   flex: 1;
   display: flex;
   gap: 30px;
   align-items: flex-start;
 }
 
-.carousel-number h3 {
+.hobby-number h3 {
   font-size: 50px;
   line-height: 1;
   margin: 0;
@@ -173,46 +173,37 @@
   -webkit-text-fill-color: transparent;
 }
 
-.carousel-details {
+.hobby-details {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.carousel-details h4 {
+.hobby-details h4 {
   font-size: 24px;
   font-weight: 500;
   margin: 0;
 }
 
-.carousel-category {
+.hobby-category {
   font-weight: 200;
-  color: #adacac;
-  margin: 0;
-  font-size: 14px;
-}
-
-.carousel-tools {
-  margin-top: 16px;
-}
-
-.carousel-tools .tools-label {
-  font-size: 11px;
-  font-weight: 600;
-  opacity: 0.5;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   color: var(--accentColor);
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.7;
 }
 
-.carousel-tools p {
+.hobby-description {
   font-weight: 200;
   color: #adacac;
-  margin: 6px 0 0;
+  margin: 8px 0 0;
   font-size: 13px;
+  line-height: 1.6;
 }
 
-.carousel-image-wrapper {
+.hobby-image-wrapper {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -220,7 +211,7 @@
 }
 
 /* ── Navigation Arrows ── */
-.carousel-arrow {
+.hobby-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -246,7 +237,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-arrow:hover {
+.hobby-arrow:hover {
   background: linear-gradient(
     135deg,
     rgba(94, 234, 212, 0.12) 0%,
@@ -257,23 +248,23 @@
   box-shadow: 0 0 30px rgba(94, 234, 212, 0.15), 0 0 60px rgba(94, 234, 212, 0.05);
 }
 
-.carousel-arrow-left {
+.hobby-arrow-left {
   left: -70px;
 }
 
-.carousel-arrow-right {
+.hobby-arrow-right {
   right: -70px;
 }
 
 /* ── Dot Indicators ── */
-.carousel-dots {
+.hobby-dots {
   display: flex;
   justify-content: center;
   gap: 12px;
   margin-top: 35px;
 }
 
-.carousel-dot {
+.hobby-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -284,168 +275,94 @@
   padding: 0;
 }
 
-.carousel-dot:hover {
+.hobby-dot:hover {
   border-color: var(--accentColor);
   background: rgba(94, 234, 212, 0.2);
 }
 
-.carousel-dot-active {
+.hobby-dot-active {
   background: var(--accentColor);
   border-color: var(--accentColor);
   box-shadow: 0 0 8px rgba(94, 234, 212, 0.4);
 }
 
-/* ── Work Image (reused) ── */
-.work-image {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.work-image-in {
-  position: relative;
-}
-
-.work-link {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: var(--backgroundColor);
-  width: 50px;
-  border-radius: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 25px;
-  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5),
-    inset 0px 0px 10px 0px #393939;
-  transition: 0.3s;
-  opacity: 0;
-}
-
-.work-image a:hover {
-  color: inherit;
-}
-
-.work-image a:hover .work-link {
-  opacity: 1;
-}
-
-.work-image video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #000;
-  object-fit: cover;
-}
-
-.work-image img {
-  max-width: 100%;
-  max-height: 400px;
-  border-radius: 8px;
-}
-
 /* ── Responsive ── */
 @media only screen and (max-width: 1600px) {
-  .carousel-arrow-left {
+  .hobby-arrow-left {
     left: -60px;
   }
-
-  .carousel-arrow-right {
+  .hobby-arrow-right {
     right: -60px;
   }
 }
 
 @media only screen and (max-width: 1400px) {
-  .work-section h2 {
+  .hobbies-section h2 {
     font-size: 42px;
   }
-
-  .carousel-details h4 {
+  .hobby-details h4 {
     font-size: 19px;
   }
-
-  .carousel-number h3 {
+  .hobby-number h3 {
     font-size: 38px;
   }
-
-  .carousel-content {
+  .hobby-content {
     gap: 40px;
   }
-
-  .carousel-arrow-left {
+  .hobby-arrow-left {
     left: 10px;
   }
-
-  .carousel-arrow-right {
+  .hobby-arrow-right {
     right: 10px;
   }
 }
 
 @media only screen and (max-width: 1025px) {
-  .carousel-content {
+  .hobby-content {
     flex-direction: column;
     gap: 30px;
   }
-
-  .carousel-info {
+  .hobby-info {
     width: 100%;
   }
-
-  .carousel-image-wrapper {
+  .hobby-image-wrapper {
     width: 100%;
   }
-
-  .carousel-arrow {
+  .hobby-arrow {
     width: 40px;
     height: 40px;
     font-size: 18px;
   }
-
-  .carousel-arrow-left {
+  .hobby-arrow-left {
     left: 10px;
   }
-
-  .carousel-arrow-right {
+  .hobby-arrow-right {
     right: 10px;
   }
 }
 
 @media only screen and (max-width: 900px) {
-  .work-section {
+  .hobbies-section {
     padding: 50px 0;
   }
-
-  .work-section h2 {
+  .hobbies-section h2 {
     font-size: 34px;
     margin-bottom: 30px;
   }
-
-  .work-glass {
+  .hobby-glass {
     padding: 10px 20px 24px;
     border-radius: 16px;
   }
-
-  .carousel-number h3 {
+  .hobby-number h3 {
     font-size: 30px;
   }
-
-  .carousel-details h4 {
+  .hobby-details h4 {
     font-size: 17px;
   }
-
-  .carousel-content {
+  .hobby-content {
     gap: 20px;
   }
-
-  .carousel-slide {
+  .hobby-slide {
     padding: 30px 0;
-  }
-
-  .work-image img {
-    max-height: 250px;
   }
 }

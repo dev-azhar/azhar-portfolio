@@ -1,0 +1,210 @@
+/* ── Domains Section ── */
+.domains-section {
+  position: relative;
+  z-index: 1;
+  background-color: var(--backgroundColor);
+  padding: 80px 0;
+}
+
+/* ── Label chip ── */
+.domains-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accentColor);
+  margin-bottom: 16px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: rgba(94, 234, 212, 0.06);
+  border: 1px solid rgba(94, 234, 212, 0.12);
+}
+
+.domains-label-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accentColor);
+  box-shadow: 0 0 6px var(--accentColor);
+  animation: domainDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes domainDotPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.domains-section h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 58px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 48px;
+  background: linear-gradient(135deg, #ffffff 40%, var(--accentColor) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.domains-section h2 > span {
+  -webkit-text-fill-color: var(--accentColor);
+}
+
+.domains-container {
+  margin: auto;
+}
+
+/* ── Grid Layout ── */
+.domains-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ── Domain Card (Liquid Glass) ── */
+.domain-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(94, 234, 212, 0.03) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 8px 40px rgba(0, 0, 0, 0.25);
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.domain-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+.domain-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.02) 45%,
+    rgba(255, 255, 255, 0.01) 50%,
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.domain-card:hover {
+  border-color: rgba(94, 234, 212, 0.2);
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 12px 50px rgba(0, 0, 0, 0.35),
+    0 0 60px -15px rgba(94, 234, 212, 0.12);
+}
+
+/* ── Icon ── */
+.domain-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: rgba(94, 234, 212, 0.04);
+  border: 1px solid rgba(94, 234, 212, 0.08);
+}
+
+.domain-icon img {
+  width: 36px;
+  height: 36px;
+}
+
+/* ── Text ── */
+.domain-card h4 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 8px;
+  color: #e2e8f0;
+}
+
+.domain-card p {
+  font-size: 12px;
+  font-weight: 200;
+  color: #8b8b8b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Responsive ── */
+@media only screen and (max-width: 1400px) {
+  .domains-section h2 {
+    font-size: 42px;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  .domains-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .domains-section {
+    padding: 50px 0;
+  }
+
+  .domains-section h2 {
+    font-size: 34px;
+    margin-bottom: 32px;
+  }
+
+  .domains-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .domain-card {
+    padding: 20px 18px;
+  }
+
+  .domain-card h4 {
+    font-size: 14px;
+  }
+
+  .domain-card p {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .domains-grid {
+    grid-template-columns: 1fr;
+  }
+}

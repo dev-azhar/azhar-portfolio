@@ -18,6 +18,11 @@ const setLighting = (scene: THREE.Scene) => {
   pointLight.castShadow = true;
   scene.add(pointLight);
 
+  // Subtle fill light from the other side for depth
+  const fillLight = new THREE.PointLight(0x7c3aed, 0, 80, 3);
+  fillLight.position.set(-4, 11, 3);
+  scene.add(fillLight);
+
   new RGBELoader()
     .setPath("/models/")
     .load("char_enviorment.hdr?v=2", function (texture) {
@@ -38,12 +43,17 @@ const setLighting = (scene: THREE.Scene) => {
   const ease = "power2.inOut";
   function turnOnLights() {
     gsap.to(scene, {
-      environmentIntensity: 0.64,
+      environmentIntensity: 0.7,
       duration: duration,
       ease: ease,
     });
     gsap.to(directionalLight, {
-      intensity: 1,
+      intensity: 1.2,
+      duration: duration,
+      ease: ease,
+    });
+    gsap.to(fillLight, {
+      intensity: 0.6,
       duration: duration,
       ease: ease,
     });

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bgApi" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e17"/>
+      <stop offset="100%" style="stop-color:#0d1a2d"/>
+    </linearGradient>
+    <filter id="glowApi">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="600" height="400" rx="16" fill="url(#bgApi)"/>
+  <rect x="1" y="1" width="598" height="398" rx="16" fill="none" stroke="rgba(94,234,212,0.12)" stroke-width="1"/>
+  <g filter="url(#glowApi)">
+    <!-- Central API hub -->
+    <circle cx="300" cy="160" r="45" fill="none" stroke="#5eead4" stroke-width="2"/>
+    <text x="300" y="155" text-anchor="middle" font-family="system-ui" font-size="11" fill="#5eead4" font-weight="600">REST</text>
+    <text x="300" y="172" text-anchor="middle" font-family="system-ui" font-size="11" fill="#5eead4" font-weight="600">API</text>
+    <!-- Endpoints radiating out -->
+    <g stroke="rgba(94,234,212,0.3)" stroke-width="1">
+      <line x1="255" y1="160" x2="130" y2="100"/>
+      <line x1="255" y1="160" x2="130" y2="220"/>
+      <line x1="345" y1="160" x2="470" y2="100"/>
+      <line x1="345" y1="160" x2="470" y2="220"/>
+    </g>
+    <!-- Endpoint boxes -->
+    <rect x="70" y="80" width="70" height="35" rx="6" fill="none" stroke="#22d3ee" stroke-width="1.2"/>
+    <text x="105" y="101" text-anchor="middle" font-family="system-ui" font-size="9" fill="#22d3ee">GET /users</text>
+    <rect x="70" y="200" width="70" height="35" rx="6" fill="none" stroke="#a78bfa" stroke-width="1.2"/>
+    <text x="105" y="221" text-anchor="middle" font-family="system-ui" font-size="9" fill="#a78bfa">POST /auth</text>
+    <rect x="460" y="80" width="70" height="35" rx="6" fill="none" stroke="#f59e0b" stroke-width="1.2"/>
+    <text x="495" y="101" text-anchor="middle" font-family="system-ui" font-size="9" fill="#f59e0b">PUT /data</text>
+    <rect x="460" y="200" width="70" height="35" rx="6" fill="none" stroke="#ef4444" stroke-width="1.2"/>
+    <text x="495" y="221" text-anchor="middle" font-family="system-ui" font-size="9" fill="#ef4444">DEL /item</text>
+    <!-- Dots -->
+    <circle cx="192" cy="130" r="3" fill="#22d3ee" opacity="0.7"/>
+    <circle cx="192" cy="190" r="3" fill="#a78bfa" opacity="0.7"/>
+    <circle cx="408" cy="130" r="3" fill="#f59e0b" opacity="0.7"/>
+    <circle cx="408" cy="190" r="3" fill="#ef4444" opacity="0.7"/>
+  </g>
+  <text x="300" y="300" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" fill="#5eead4" font-weight="600" letter-spacing="2">WEB API</text>
+  <text x="300" y="330" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="rgba(255,255,255,0.4)" letter-spacing="3">.NET CORE · EF CORE · JWT</text>
+</svg>

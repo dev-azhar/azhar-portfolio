@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e17"/>
+      <stop offset="100%" style="stop-color:#162032"/>
+    </linearGradient>
+    <filter id="glow4">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="600" height="400" rx="16" fill="url(#bg4)"/>
+  <rect x="1" y="1" width="598" height="398" rx="16" fill="none" stroke="rgba(94,234,212,0.12)" stroke-width="1"/>
+  <!-- Cloud shape -->
+  <g filter="url(#glow4)" transform="translate(200,80)">
+    <path d="M50,140 Q-10,140 5,100 Q-5,60 40,60 Q50,20 100,30 Q140,0 170,30 Q220,20 210,70 Q240,80 220,120 Q235,150 190,140 Z" fill="none" stroke="#22d3ee" stroke-width="1.5"/>
+    <!-- Inner symbols -->
+    <text x="60" y="95" font-family="system-ui" font-size="14" fill="#5eead4" opacity="0.5">λ</text>
+    <text x="100" y="80" font-family="system-ui" font-size="14" fill="#5eead4" opacity="0.5">⬡</text>
+    <text x="140" y="95" font-family="system-ui" font-size="14" fill="#5eead4" opacity="0.5">☁</text>
+    <text x="100" y="115" font-family="system-ui" font-size="14" fill="#5eead4" opacity="0.5">⚡</text>
+    <!-- Connection lines -->
+    <line x1="75" y1="90" x2="95" y2="78" stroke="#5eead4" stroke-width="0.5" opacity="0.3"/>
+    <line x1="115" y1="78" x2="135" y2="90" stroke="#5eead4" stroke-width="0.5" opacity="0.3"/>
+    <line x1="100" y1="85" x2="100" y2="108" stroke="#5eead4" stroke-width="0.5" opacity="0.3"/>
+  </g>
+  <!-- Upward arrows -->
+  <g opacity="0.3">
+    <line x1="250" y1="250" x2="250" y2="220" stroke="#5eead4" stroke-width="1"/>
+    <polygon points="245,222 250,212 255,222" fill="#5eead4"/>
+    <line x1="300" y1="260" x2="300" y2="225" stroke="#5eead4" stroke-width="1"/>
+    <polygon points="295,227 300,217 305,227" fill="#5eead4"/>
+    <line x1="350" y1="250" x2="350" y2="220" stroke="#5eead4" stroke-width="1"/>
+    <polygon points="345,222 350,212 355,222" fill="#5eead4"/>
+  </g>
+  <text x="300" y="300" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" fill="#22d3ee" font-weight="600" letter-spacing="2">CLOUD MIGRATION</text>
+  <text x="300" y="330" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="rgba(255,255,255,0.4)" letter-spacing="3">AZURE · COSMOS DB · AKS</text>
+</svg>

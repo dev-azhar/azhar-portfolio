@@ -1,3 +1,56 @@
+/* ── Liquid Glass Card Utility ── */
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(94, 234, 212, 0.03) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 8px 40px rgba(0, 0, 0, 0.35),
+    0 0 80px -20px rgba(94, 234, 212, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+}
+
+.glass-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.01) 50%,
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+/* ── About Section ── */
 .about-section {
   display: flex;
   align-items: center;
@@ -9,25 +62,90 @@
   width: var(--cWidth);
   margin: auto;
 }
+
 .about-me {
-  padding: 50px 0px;
-  padding-bottom: 0;
-  width: 500px;
+  padding: 40px 44px;
+  padding-bottom: 36px;
+  width: 540px;
   max-width: calc(100% - 15px);
-}
-.about-me h3 {
-  font-size: 25px;
-  text-transform: uppercase;
-  letter-spacing: 7px;
-  font-weight: 400;
-  color: var(--accentColor);
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.about-me p {
-  font-size: 33px;
+.about-me:hover {
+  border-color: rgba(94, 234, 212, 0.15);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 8px 50px rgba(0, 0, 0, 0.4),
+    0 0 100px -20px rgba(94, 234, 212, 0.12);
+}
+
+/* ── Label chip ── */
+.about-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
   font-weight: 600;
-  line-height: 36px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accentColor);
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(94, 234, 212, 0.06);
+  border: 1px solid rgba(94, 234, 212, 0.12);
+}
+
+.about-label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accentColor);
+  box-shadow: 0 0 8px var(--accentColor);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accentColor); }
+  50% { opacity: 0.5; box-shadow: 0 0 3px var(--accentColor); }
+}
+
+/* ── Title ── */
+.about-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 34px;
+  font-weight: 700;
   letter-spacing: 1px;
+  text-transform: none;
+  background: linear-gradient(135deg, #ffffff 30%, var(--accentColor) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 0 0 18px 0;
+  line-height: 1.1;
+}
+
+/* ── Paragraph ── */
+.about-para {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+  color: rgba(234, 229, 236, 0.75);
+}
+
+/* ── Inner glow blob ── */
+.about-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  bottom: -60px;
+  right: -60px;
+  background: radial-gradient(circle, rgba(94, 234, 212, 0.10) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
 }
 
 @media only screen and (min-width: 600px) {
@@ -37,7 +155,7 @@
 }
 @media only screen and (min-width: 768px) {
   .about-me {
-    width: 500px;
+    width: 540px;
     max-width: calc(100% - 70px);
     transform: translateY(0%);
   }
@@ -55,17 +173,23 @@
     opacity: 1;
   }
   .about-me {
-    padding: 0px;
+    padding: 48px 52px;
     width: 50%;
   }
-  .about-me p {
-    font-size: 1.9vw;
-    line-height: 2.3vw;
+  .about-title {
+    font-size: 40px;
+  }
+  .about-para {
+    font-size: 1vw;
+    line-height: 1.8;
   }
 }
 @media only screen and (min-width: 1950px) {
-  .about-me p {
-    font-size: 2.5rem;
-    line-height: 2.7rem;
+  .about-para {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+  .about-title {
+    font-size: 44px;
   }
 }
