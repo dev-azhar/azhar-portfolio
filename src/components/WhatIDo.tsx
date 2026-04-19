@@ -166,20 +166,23 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
             <div className="what-content-in">
               <h3>PYTHON & CLOUD</h3>
-              <h4>Microservices & Azure Architecture</h4>
+              <h4>Microservices, Azure & AI/ML</h4>
               <p>
                 Building Python microservices with FastAPI and Flask, cloud-native
-                solutions on Azure, and data workflows with pandas and NumPy.
-                From AKS deployments to CI/CD pipelines and serverless functions.
+                solutions on Azure, and intelligent systems with LLMs, agentic
+                frameworks, and RAG pipelines. From AKS deployments to AI-powered workflows.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
                 <div className="what-tags">Python</div>
                 <div className="what-tags">FastAPI</div>
                 <div className="what-tags">Flask</div>
-                <div className="what-tags">Django</div>
-                <div className="what-tags">Celery</div>
                 <div className="what-tags">LangChain</div>
+                <div className="what-tags">LangGraph</div>
+                <div className="what-tags">HuggingFace</div>
+                <div className="what-tags">LLM Architecture</div>
+                <div className="what-tags">SLM</div>
+                <div className="what-tags">Celery</div>
                 <div className="what-tags">Pandas</div>
                 <div className="what-tags">NumPy</div>
                 <div className="what-tags">Azure AKS</div>
