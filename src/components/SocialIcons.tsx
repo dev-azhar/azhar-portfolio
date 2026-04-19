@@ -58,7 +58,7 @@ const SocialIcons = () => {
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
-          <a href="https://github.com/dev-azhar/azhar-portfolio" target="_blank">
+          <a href="https://github.com/dev-azhar" target="_blank">
             <FaGithub />
           </a>
         </span>
@@ -68,7 +68,7 @@ const SocialIcons = () => {
           </a>
         </span>
       </div>
-      <a className="resume-button" href="#">
+      <a className="resume-button" href="/Shaikh_Azhar_Resume.pdf" target="_blank" rel="noopener noreferrer">
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />

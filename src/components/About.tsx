@@ -10,12 +10,14 @@ const About = () => {
         </div>
         <h3 className="title about-title">About Me</h3>
         <p className="para about-para">
-          Technical Lead & AI Engineer with 9+ years of experience in
-          full-stack development, AI/ML, and cloud architecture. Proficient in
-          .NET Core, Angular, Azure, Python, and building intelligent systems
-          with LLMs, agentic frameworks, and RAG pipelines. Skilled in
-          delivering scalable enterprise applications and AI-powered solutions
-          using modern methodologies.
+          Technical Lead with 9+ years designing, building, and shipping
+          enterprise applications across the Microsoft and Python ecosystems.
+          Deep hands-on experience in .NET Core, Python/FastAPI, Angular, and
+          Azure, with proven delivery across every phase of the SDLC — from
+          requirements analysis through CI/CD and production support.
+          Comfortable leading teams through Agile/Scrum, coordinating between
+          customers, design, and engineering, and maintaining high code quality
+          through TDD, SOLID design, and tools like SonarQube and Fortify.
         </p>
         <div className="about-glow"></div>
       </div>

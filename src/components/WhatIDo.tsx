@@ -165,30 +165,28 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>AI / ML</h3>
-              <h4>Intelligent Systems & Agents</h4>
+              <h3>PYTHON & CLOUD</h3>
+              <h4>Microservices & Azure Architecture</h4>
               <p>
-                Building AI-powered applications with LLMs, agentic workflows,
-                and RAG pipelines. From fine-tuning models to deploying
-                production-grade intelligent systems.
+                Building Python microservices with FastAPI and Flask, cloud-native
+                solutions on Azure, and data workflows with pandas and NumPy.
+                From AKS deployments to CI/CD pipelines and serverless functions.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
                 <div className="what-tags">Python</div>
-                <div className="what-tags">PyTorch</div>
-                <div className="what-tags">TensorFlow</div>
+                <div className="what-tags">FastAPI</div>
+                <div className="what-tags">Flask</div>
+                <div className="what-tags">Django</div>
+                <div className="what-tags">Celery</div>
                 <div className="what-tags">LangChain</div>
-                <div className="what-tags">LlamaIndex</div>
-                <div className="what-tags">CrewAI</div>
-                <div className="what-tags">AutoGen</div>
-                <div className="what-tags">RAG</div>
-                <div className="what-tags">OpenAI</div>
-                <div className="what-tags">HuggingFace</div>
-                <div className="what-tags">Scikit-learn</div>
                 <div className="what-tags">Pandas</div>
                 <div className="what-tags">NumPy</div>
-                <div className="what-tags">FastAPI</div>
-                <div className="what-tags">Vector DB</div>
+                <div className="what-tags">Azure AKS</div>
+                <div className="what-tags">Azure Functions</div>
+                <div className="what-tags">Docker</div>
+                <div className="what-tags">Azure DevOps</div>
+                <div className="what-tags">PostgreSQL</div>
               </div>
               <div className="what-arrow"></div>
             </div>

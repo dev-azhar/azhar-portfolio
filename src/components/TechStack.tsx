@@ -72,15 +72,15 @@ function createTextTexture(text: string, bgColor: string, textColor: string) {
 
 const aiTextTextures = [
   createTextTexture("Python", "#3776AB", "#FFD43B"),
-  createTextTexture("PyTorch", "#EE4C2C", "#ffffff"),
-  createTextTexture("LLM", "#0f1729", "#5eead4"),
-  createTextTexture("RAG", "#7c3aed", "#ffffff"),
-  createTextTexture("Lang\nChain", "#1C3C3C", "#22d3ee"),
-  createTextTexture("OpenAI", "#10a37f", "#ffffff"),
-  createTextTexture("HF", "#FFD21E", "#000000"),
+  createTextTexture("C#", "#68217A", "#ffffff"),
+  createTextTexture(".NET\nCore", "#512BD4", "#ffffff"),
+  createTextTexture("Azure", "#0078D4", "#ffffff"),
+  createTextTexture("Angular", "#DD0031", "#ffffff"),
+  createTextTexture("SQL", "#CC2927", "#ffffff"),
+  createTextTexture("Docker", "#2496ED", "#ffffff"),
   createTextTexture("FastAPI", "#009688", "#ffffff"),
-  createTextTexture("CrewAI", "#FF6B35", "#ffffff"),
-  createTextTexture("TF", "#FF6F00", "#ffffff"),
+  createTextTexture("Vue", "#4FC08D", "#ffffff"),
+  createTextTexture("T-SQL", "#FF6F00", "#ffffff"),
 ];
 
 const textures = [...imageTextures, ...aiTextTextures];

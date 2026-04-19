@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shaikh Azhar — Technical Lead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d12;
+    --bg-2: #0f141b;
+    --panel: #131922;
+    --panel-2: #1a222e;
+    --panel-3: #202a38;
+    --line: #263140;
+    --line-bright: #3a4658;
+    --ink: #e8ecf2;
+    --ink-dim: #8a94a5;
+    --ink-faint: #4a5466;
+
+    --amber: #ffb454;
+    --green: #7ee787;
+    --cyan: #79c0ff;
+    --rose: #f7768e;
+    --violet: #a78bfa;
+    --lime: #c5e478;
+    --teal: #5fd4c0;
+    --gold: #e5c07b;
+    --magenta: #ff7b72;
+
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    --sans: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(121, 192, 255, 0.06), transparent 40%),
+      radial-gradient(circle at 80% 100%, rgba(255, 180, 84, 0.05), transparent 40%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  header {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: 24px 26px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--amber), var(--cyan), var(--violet), var(--rose));
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 10px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+  }
+  .meta span b { color: var(--amber); font-weight: 500; }
+
+  h1 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 40px);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+    line-height: 1.1;
+  }
+  .role {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: var(--amber);
+    letter-spacing: 0.01em;
+    margin-bottom: 16px;
+  }
+
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    font-size: 12px;
+    color: var(--ink-dim);
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    margin-bottom: 14px;
+  }
+  .contacts span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .contacts .ico {
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+  .contacts .ico.pf { color: var(--violet); }
+  .contacts .ico.nx { color: var(--amber); }
+  .contacts .ico.gh { color: var(--green); }
+  .contacts a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--ink-faint);
+    transition: border-color 0.15s;
+  }
+  .contacts a:hover { border-bottom-color: var(--cyan); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .stat {
+    background: var(--panel);
+    padding: 12px 14px;
+  }
+  .stat-label {
+    font-size: 9px;
+    color: var(--ink-faint);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .stat-val {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .stat-val b { color: var(--amber); font-weight: 700; }
+
+  section.block {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    margin-bottom: 20px;
+    padding: 20px 22px 22px;
+    position: relative;
+  }
+  .block-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--line);
+    flex-wrap: wrap;
+  }
+  .block-title {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .sec-num {
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.15em;
+  }
+  .sec-name {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+  }
+  .sec-note {
+    font-size: 11px;
+    color: var(--ink-dim);
+  }
+
+  .summary {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .summary b { color: var(--amber); font-weight: 500; }
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .highlight {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--amber);
+    padding: 10px 12px;
+    font-size: 11px;
+    color: var(--ink-dim);
+    line-height: 1.55;
+  }
+  .highlight b { color: var(--ink); font-family: var(--sans); font-weight: 600; font-size: 12px; display: block; margin-bottom: 2px; }
+  .highlight.h-cyan { border-left-color: var(--cyan); }
+  .highlight.h-green { border-left-color: var(--green); }
+  .highlight.h-violet { border-left-color: var(--violet); }
+  .highlight.h-teal { border-left-color: var(--teal); }
+  .highlight.h-lime { border-left-color: var(--lime); }
+
+  /* ============ PROJECTS ============ */
+  .featured-project {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .featured-project::after {
+    content: '★ FLAGSHIP';
+    position: absolute;
+    top: -1px;
+    right: 14px;
+    background: var(--panel-2);
+    padding: 2px 10px;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    border: 1px solid var(--amber);
+    border-top: none;
+    font-weight: 500;
+  }
+  .featured-project .project-name {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .featured-project .project-tagline {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+  .featured-project .project-desc {
+    font-size: 12px;
+    color: var(--ink-dim);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .featured-project .project-desc b { color: var(--ink); font-weight: 500; }
+  .featured-project .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+  }
+  .featured-project .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  @media (min-width: 720px) {
+    .projects { grid-template-columns: 1fr 1fr; }
+  }
+  .project {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--violet);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .project.pr-cyan { border-top-color: var(--cyan); }
+  .project.pr-green { border-top-color: var(--green); }
+  .project.pr-teal { border-top-color: var(--teal); }
+  .project.pr-rose { border-top-color: var(--rose); }
+  .project.pr-gold { border-top-color: var(--gold); }
+
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .project-name-s {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .project-tag {
+    font-size: 9px;
+    color: var(--ink-faint);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .project-desc-s {
+    font-size: 11px;
+    color: var(--ink-dim);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .project-desc-s b { color: var(--ink); font-weight: 500; }
+
+  .project-stack-s {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+    margin-bottom: 8px;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--cyan);
+    text-decoration: none;
+    font-family: var(--mono);
+    letter-spacing: 0.01em;
+    word-break: break-all;
+  }
+  .project-link:hover { color: var(--amber); }
+  .project-link .arr {
+    color: var(--ink-faint);
+    font-size: 11px;
+  }
+  .project-link.gh { color: var(--green); }
+  .project-link.gh:hover { color: var(--amber); }
+
+  .gh-footer {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: var(--bg);
+    border: 1px dashed var(--line);
+    font-size: 11px;
+    color: var(--ink-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .gh-footer a {
+    color: var(--green);
+    text-decoration: none;
+    font-family: var(--mono);
+    border-bottom: 1px dashed var(--ink-faint);
+  }
+  .gh-footer a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+
+  /* skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+  }
+  .skill-cat {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    padding: 12px 14px;
+    border-left: 3px solid var(--cyan);
+  }
+  .skill-cat.sk-amber { border-left-color: var(--amber); }
+  .skill-cat.sk-violet { border-left-color: var(--violet); }
+  .skill-cat.sk-green { border-left-color: var(--green); }
+  .skill-cat.sk-teal { border-left-color: var(--teal); }
+  .skill-cat.sk-gold { border-left-color: var(--gold); }
+  .skill-cat.sk-rose { border-left-color: var(--rose); }
+  .skill-cat.sk-lime { border-left-color: var(--lime); }
+  .skill-cat.sk-magenta { border-left-color: var(--magenta); }
+
+  .skill-label {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 11px;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .skill-cat-tag {
+    font-size: 8px;
+    color: var(--ink-faint);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .skill-chip {
+    font-size: 10px;
+    color: var(--ink-dim);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 2px 7px;
+    letter-spacing: 0.01em;
+    font-family: var(--mono);
+  }
+  .skill-chip.primary {
+    color: var(--amber);
+    border-color: rgba(255, 180, 84, 0.3);
+    background: rgba(255, 180, 84, 0.05);
+  }
+
+  /* experience */
+  .exp-timeline {
+    border-left: 1px dashed var(--line);
+    margin-left: 20px;
+    padding-left: 20px;
+    padding-top: 6px;
+  }
+  .role-card {
+    position: relative;
+    margin-bottom: 18px;
+    padding: 16px 18px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--ink-faint);
+  }
+  .role-card::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 24px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid currentColor;
+  }
+  .role-card.r-current { border-left-color: var(--amber); color: var(--amber); }
+  .role-card.r-violet { border-left-color: var(--violet); color: var(--violet); }
+  .role-card.r-cyan { border-left-color: var(--cyan); color: var(--cyan); }
+  .role-card.r-green { border-left-color: var(--green); color: var(--green); }
+  .role-card.r-rose { border-left-color: var(--rose); color: var(--rose); }
+  .role-card.r-teal { border-left-color: var(--teal); color: var(--teal); }
+
+  .role-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .role-org {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .role-dates {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .role-dates.current { color: var(--amber); }
+  .role-title {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 12px;
+    color: currentColor;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+  .role-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+  }
+  .role-bullets li {
+    font-size: 11px;
+    color: var(--ink-dim);
+    line-height: 1.65;
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  .role-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: currentColor;
+    opacity: 0.7;
+    font-size: 10px;
+  }
+  .role-bullets li b { color: var(--ink); font-weight: 500; }
+
+  .role-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+  }
+  .role-stack-label {
+    font-size: 9px;
+    color: var(--ink-faint);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-right: 6px;
+    align-self: center;
+  }
+  .stack-chip {
+    font-size: 10px;
+    color: var(--ink-dim);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 2px 7px;
+    font-family: var(--mono);
+  }
+
+  /* education */
+  .edu {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  @media (min-width: 640px) {
+    .edu { grid-template-columns: 2fr 1fr; }
+  }
+  .edu-box {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--teal);
+    padding: 12px 14px;
+  }
+  .edu-degree {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .edu-inst {
+    font-size: 11px;
+    color: var(--ink-dim);
+    margin-bottom: 3px;
+  }
+  .edu-meta {
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 6px;
+    border-top: 1px dashed var(--line);
+    margin-top: 6px;
+  }
+
+  footer {
+    margin-top: 28px;
+    padding: 20px 22px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    font-size: 11px;
+    color: var(--ink-dim);
+    line-height: 1.7;
+    position: relative;
+  }
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--amber));
+  }
+  footer h3 {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  footer .principle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  footer .principle span:first-child { color: var(--amber); flex-shrink: 0; }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    body::before, header::before, footer::before { display: none; }
+    .wrap { max-width: 100%; padding: 12px; }
+    section.block, header, footer, .role-card, .stat, .skill-cat, .highlight, .edu-box, .project, .featured-project, .gh-footer {
+      border-color: #ccc !important;
+      background: #fff !important;
+      color: #000 !important;
+      box-shadow: none;
+    }
+    .role-bullets li, .summary, .stat-val, .role-org, .sec-name, h1, .role, .skill-label, .edu-degree, .project-name, .project-name-s, .project-desc, .project-desc-s {
+      color: #000 !important;
+    }
+    .role-card, .project, .featured-project { break-inside: avoid; }
+  }
+
+  section.block { animation: fadeIn 0.5s ease backwards; }
+  section.block:nth-of-type(1) { animation-delay: 0.05s; }
+  section.block:nth-of-type(2) { animation-delay: 0.10s; }
+  section.block:nth-of-type(3) { animation-delay: 0.15s; }
+  section.block:nth-of-type(4) { animation-delay: 0.20s; }
+  section.block:nth-of-type(5) { animation-delay: 0.25s; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 540px) {
+    .wrap { padding: 16px 12px 40px; }
+    header { padding: 18px; }
+    section.block { padding: 16px; }
+    .exp-timeline { margin-left: 14px; padding-left: 14px; }
+    .role-card::before { left: -19px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="meta">
+    <span>CV · <b>v2026.1</b></span>
+    <span>STATUS · <b>OPEN TO ROLES</b></span>
+    <span>DOMAIN · <b>FULL-STACK &amp; CLOUD</b></span>
+    <span>LOCATION · <b>INDIA</b></span>
+  </div>
+  <h1>Shaikh Azhar</h1>
+  <div class="role">Technical Lead · Microsoft Stack &amp; Python · Azure</div>
+
+  <div class="contacts">
+    <span><span class="ico">✉</span><a href="mailto:azhar.s786s@gmail.com">azhar.s786s@gmail.com</a></span>
+    <span><span class="ico">☎</span>+91 73963 28975</span>
+    <span><span class="ico gh">◆</span><a href="https://github.com/dev-azhar" target="_blank" rel="noopener">github.com/dev-azhar</a></span>
+    <span><span class="ico pf">◆</span><a href="https://azhar-portfolio-gamma.vercel.app/" target="_blank" rel="noopener">Portfolio</a></span>
+    <span><span class="ico nx">◆</span><a href="https://nexus-exchange-mu.vercel.app/" target="_blank" rel="noopener">Nexus Exchange</a></span>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Experience</div>
+      <div class="stat-val"><b>9+</b> years</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Current Role</div>
+      <div class="stat-val">Tech Lead</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Primary</div>
+      <div class="stat-val">C# · Python</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Cloud</div>
+      <div class="stat-val">Azure · AKS</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Frontend</div>
+      <div class="stat-val">Angular 16</div>
+    </div>
+  </div>
+</header>
+
+<!-- § 1 SUMMARY -->
+<section class="block">
+  <div class="block-head">
+    <div class="block-title">
+      <span class="sec-num">§ 1</span>
+      <span class="sec-name">Professional Summary</span>
+    </div>
+    <span class="sec-note">— what I do and how I work</span>
+  </div>
+  <div class="summary">
+    Technical Lead with <b>9+ years</b> designing, building, and shipping enterprise applications across the Microsoft and Python ecosystems. Deep hands-on experience in <b>.NET Core</b>, <b>Python/FastAPI</b>, <b>Angular</b>, and <b>Azure</b>, with proven delivery across every phase of the SDLC — from requirements analysis through CI/CD and production support. Comfortable leading teams through Agile/Scrum, coordinating between customers, design, and engineering, and maintaining high code quality through TDD, SOLID design, and tools like SonarQube and Fortify. Also an active builder of open-source systems — see § 2.
+  </div>
+  <div class="highlights">
+    <div class="highlight h-cyan">
+      <b>Full-Stack Delivery</b>
+      .NET Core 8 · Angular 16 · Web API · SQL Server — from backend services to responsive SPAs.
+    </div>
+    <div class="highlight">
+      <b>Cloud &amp; DevOps</b>
+      Azure AKS, Functions, Key Vault, Logic Apps · CI/CD via Azure DevOps + Docker.
+    </div>
+    <div class="highlight h-green">
+      <b>Python &amp; Data</b>
+      FastAPI microservices, pandas/NumPy for validation &amp; analysis workflows.
+    </div>
+    <div class="highlight h-violet">
+      <b>Architecture</b>
+      Microservices, SOA, N-tier, Service Fabric · UML modelling in MS Visio.
+    </div>
+    <div class="highlight h-teal">
+      <b>Quality Engineering</b>
+      TDD, MS Fakes, NUnit · SonarQube &amp; Fortify for code quality &amp; security.
+    </div>
+    <div class="highlight h-lime">
+      <b>Leadership</b>
+      Team coordination, peer reviews, stakeholder management across geo-distributed teams.
+    </div>
+  </div>
+</section>
+
+<!-- § 2 PROJECTS -->
+<section class="block">
+  <div class="block-head">
+    <div class="block-title">
+      <span class="sec-num">§ 2</span>
+      <span class="sec-name">Selected Projects</span>
+    </div>
+    <span class="sec-note">— live deployments &amp; open-source work</span>
+  </div>
+
+  <!-- FEATURED: NEXUS EXCHANGE -->
+  <div class="featured-project">
+    <div class="project-name">Nexus Exchange</div>
+    <div class="project-tagline">Crypto trading platform · microservices architecture</div>
+    <div class="project-desc">
+      Production-style crypto exchange with <b>order matching, real-time market data, orderbook visualization, and trading UI</b>. Reference design covering API gateway, event streaming, double-entry ledger, and liquidation patterns used by production exchanges. Live deployment on Vercel.
+    </div>
+    <div class="project-footer">
+      <div class="project-stack">
+        <span class="stack-chip">FastAPI</span>
+        <span class="stack-chip">Nuxt 3 / Vue</span>
+        <span class="stack-chip">PostgreSQL</span>
+        <span class="stack-chip">WebSockets</span>
+        <span class="stack-chip">Microservices</span>
+        <span class="stack-chip">Azure AKS</span>
+      </div>
+      <a class="project-link" href="https://nexus-exchange-mu.vercel.app/" target="_blank" rel="noopener">
+        <span class="arr">↗</span> nexus-exchange-mu.vercel.app
+      </a>
+    </div>
+  </div>
+
+  <!-- OTHER PROJECTS GRID -->
+  <div class="projects">
+
+    <!-- AgentExecOS -->
+    <div class="project pr-cyan">
+      <div class="project-head">
+        <div class="project-name-s">AgentExecOS</div>
+        <span class="project-tag">Python · v0.1.0</span>
+      </div>
+      <div class="project-desc-s">
+        <b>Deterministic execution layer that turns LLM plans into safe, verifiable, production-ready code changes.</b> LLM plans, AgentExecOS executes in a Docker sandbox, and returns structured diffs, test reports, and audit logs for verification.
+      </div>
+      <div class="project-stack-s">
+        <span class="stack-chip">FastAPI</span>
+        <span class="stack-chip">Celery + Redis</span>
+        <span class="stack-chip">PostgreSQL + pgvector</span>
+        <span class="stack-chip">Docker SDK</span>
+        <span class="stack-chip">LangChain</span>
+        <span class="stack-chip">Ollama</span>
+        <span class="stack-chip">Prometheus</span>
+        <span class="stack-chip">MinIO</span>
+      </div>
+      <div class="project-links">
+        <a class="project-link gh" href="https://github.com/dev-azhar/AgentExecOS" target="_blank" rel="noopener">
+          <span class="arr">↗</span> github.com/dev-azhar/AgentExecOS
+        </a>
+      </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="project">
+      <div class="project-head">
+        <div class="project-name-s">Personal Portfolio</div>
+        <span class="project-tag">TypeScript · Live</span>
+      </div>
+      <div class="project-desc-s">
+        Personal portfolio showcasing technical work, project history, and writing. Built with <b>TypeScript</b> and deployed on <b>Vercel edge infrastructure</b> with a focus on performance, accessibility, and responsive design.
+      </div>
+      <div class="project-stack-s">
+        <span class="stack-chip">TypeScript</span>
+        <span class="stack-chip">Vercel</span>
+        <span class="stack-chip">Responsive UI</span>
+        <span class="stack-chip">Edge Deploy</span>
+      </div>
+      <div class="project-links">
+        <a class="project-link" href="https://azhar-portfolio-gamma.vercel.app/" target="_blank" rel="noopener">
+          <span class="arr">↗</span> azhar-portfolio-gamma.vercel.app
+        </a>
+        <a class="project-link gh" href="https://github.com/dev-azhar/azhar-portfolio" target="_blank" rel="noopener">
+          <span class="arr">↗</span> source
+        </a>
+      </div>
+    </div>
+
+    <!-- ClaimGPT -->
+    <div class="project pr-green">
+      <div class="project-head">
+        <div class="project-name-s">ClaimGPT</div>
+        <span class="project-tag">Python · AI</span>
+      </div>
+      <div class="project-desc-s">
+        LLM-assisted claims processing — applying <b>generative AI to claims intake, triage, and response drafting</b>. Explores practical integration of retrieval-augmented workflows with structured claim data pipelines.
+      </div>
+      <div class="project-stack-s">
+        <span class="stack-chip">Python</span>
+        <span class="stack-chip">LLM / RAG</span>
+        <span class="stack-chip">NLP</span>
+      </div>
+      <div class="project-links">
+        <a class="project-link gh" href="https://github.com/dev-azhar/ClaimGPT" target="_blank" rel="noopener">
+          <span class="arr">↗</span> github.com/dev-azhar/ClaimGPT
+        </a>
+      </div>
+    </div>
+
+    <!-- eINP -->
+    <div class="project pr-teal">
+      <div class="project-head">
+        <div class="project-name-s">eINP</div>
+        <span class="project-tag">Vue · Enterprise</span>
+      </div>
+      <div class="project-desc-s">
+        Vue-based enterprise platform — single-page application built with <b>Vue's reactive model</b> and component architecture. Focused on structured form workflows, state management, and clean component composition.
+      </div>
+      <div class="project-stack-s">
+        <span class="stack-chip">Vue</span>
+        <span class="stack-chip">SPA</span>
+        <span class="stack-chip">Component-driven</span>
+      </div>
+      <div class="project-links">
+        <a class="project-link gh" href="https://github.com/dev-azhar/eINP" target="_blank" rel="noopener">
+          <span class="arr">↗</span> github.com/dev-azhar/eINP
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="gh-footer">
+    <span>All source code available at <a href="https://github.com/dev-azhar" target="_blank" rel="noopener">github.com/dev-azhar</a></span>
+    <span style="color: var(--ink-faint); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;">4 public repos</span>
+  </div>
+</section>
+
+<!-- § 3 SKILLS -->
+<section class="block">
+  <div class="block-head">
+    <div class="block-title">
+      <span class="sec-num">§ 3</span>
+      <span class="sec-name">Technical Stack</span>
+    </div>
+    <span class="sec-note">— primary tools in production use</span>
+  </div>
+  <div class="skills-grid">
+
+    <div class="skill-cat sk-amber">
+      <div class="skill-label">Languages <span class="skill-cat-tag">primary</span></div>
+      <div class="skill-items">
+        <span class="skill-chip primary">C#</span>
+        <span class="skill-chip primary">Python</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">TypeScript</span>
+        <span class="skill-chip">T-SQL</span>
+        <span class="skill-chip">VB.NET</span>
+      </div>
+    </div>
+
+    <div class="skill-cat sk-cyan">
+      <div class="skill-label">.NET &amp; Backend <span class="skill-cat-tag">core</span></div>
+      <div class="skill-items">
+        <span class="skill-chip primary">.NET Core 8 / 3.1</span>
+        <span class="skill-chip">.NET 4.7.2</span>
+        <span class="skill-chip">ASP.NET Core</span>
+        <span class="skill-chip">Web API</span>
+        <span class="skill-chip">WCF</span>
+        <span class="skill-chip">MVC 5</span>
+        <span class="skill-chip">Entity Framework Core</span>
+        <span class="skill-chip">LINQ</span>
+        <span class="skill-chip">ADO.NET</span>
+      </div>
+    </div>
+
+    <div class="skill-cat sk-green">
+      <div class="skill-label">Python Stack <span class="skill-cat-tag">api &amp; data</span></div>
+      <div class="skill-items">
+        <span class="skill-chip primary">FastAPI</span>
+        <span class="skill-chip">Flask</span>
+        <span class="skill-chip">Django</span>
+        <span class="skill-chip">Celery</span>
+        <span class="skill-chip">LangChain</span>
+        <span class="skill-chip">Pandas</span>
+        <span class="skill-chip">NumPy</span>
+      </div>
+    </div>
+
+    <div class="skill-cat sk-violet">
+      <div class="skill-label">Frontend <span class="skill-cat-tag">spa &amp; ui</span></div>
+      <div class="skill-items">
+        <span class="skill-chip primary">Angular 16</span>
+        <span class="skill-chip">Vue / Nuxt 3</span>
+        <span class="skill-chip">Telerik Kendo UI</span>
+        <span class="skill-chip">Bootstrap</span>
+        <span class="skill-chip">HTML5</span>
+        <span class="skill-chip">CSS3</span>
+        <span class="skill-chip">jQuery</span>
+        <span class="skill-chip">Node.js</span>
+        <span class="skill-chip">AJAX</span>
+      </div>
+    </div>
+
+    <div class="skill-cat sk-rose">
+      <div class="skill-label">Cloud · Azure <span class="skill-cat-tag">primary</span></div>
+      <div class="skill-items">
+        <span class="skill-chip primary">Azure Kubernetes Service</span>
+        <span class="skill-chip primary">Azure DevOps</span>
+        <span class="skill-chip">Azure Functions</span>
+        <span class="skill-chip">Key Vault</span>
+        <span class="skill-chip">Logic Apps</span>
+        <span class="skill-chip">Cosmos DB</span>
+        <span class="skill-chip">Blob Storage</span>
+        <span class="skill-chip">Data Lake</span>
+        <span class="skill-chip">Health Services</span>
+        <span class="skill-chip">AI Foundry</span>
+        <span class="skill-chip">Load Balancer</span>
+        <span class="skill-chip">Active Directory</span>
+        <span class="skill-chip">AWS</span>
+      </div>
+    </div>
+
+    <div class="skill-cat sk-teal">
+      <div class="skill-label">Databases <span class="skill-cat-tag">storage</span></div>
+      <div class="skill-items">
+        <span class="skill-chip primary">SQL Server</span>
+        <span class="skill-chip">PostgreSQL</span>
+        <span class="skill-chip">pgvector</span>
+        <span class="skill-chip">MongoDB</span>
+        <span class="skill-chip">Cosmos DB</span>
+        <span class="skill-chip">Redis</span>
+        <span class="skill-chip">MySQL</span>
+        <span class="skill-chip">DB2</span>
+      </div>
+    </div>
+
+    <div class="skill-cat sk-gold">
+      <div class="skill-label">Architecture &amp; Patterns</div>
+      <div class="skill-items">
+        <span class="skill-chip">Microservices</span>
+        <span class="skill-chip">Service Fabric</span>
+        <span class="skill-chip">SOA</span>
+        <span class="skill-chip">N-Tier</span>
+        <span class="skill-chip">REST</span>
+        <span class="skill-chip">Event-Driven</span>
+        <span class="skill-chip">OOP / SOLID</span>
+        <span class="skill-chip">MVC</span>
+        <span class="skill-chip">TDD</span>
+        <span class="skill-chip">Agile / Scrum</span>
+      </div>
+    </div>
+
+    <div class="skill-cat sk-lime">
+      <div class="skill-label">DevOps &amp; Tooling</div>
+      <div class="skill-items">
+        <span class="skill-chip primary">Azure DevOps CI/CD</span>
+        <span class="skill-chip">Docker</span>
+        <span class="skill-chip">Git</span>
+        <span class="skill-chip">TFS</span>
+        <span class="skill-chip">SVN</span>
+        <span class="skill-chip">SonarQube</span>
+        <span class="skill-chip">Fortify</span>
+        <span class="skill-chip">ReSharper</span>
+        <span class="skill-chip">NUnit</span>
+        <span class="skill-chip">Prometheus</span>
+        <span class="skill-chip">MS Fakes</span>
+      </div>
+    </div>
+
+    <div class="skill-cat sk-magenta">
+      <div class="skill-label">IDE &amp; Infra</div>
+      <div class="skill-items">
+        <span class="skill-chip">Visual Studio 2022</span>
+        <span class="skill-chip">VS Code</span>
+        <span class="skill-chip">SSMS</span>
+        <span class="skill-chip">IIS 10</span>
+        <span class="skill-chip">Windows Server</span>
+        <span class="skill-chip">MS Visio</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- § 4 EXPERIENCE -->
+<section class="block">
+  <div class="block-head">
+    <div class="block-title">
+      <span class="sec-num">§ 4</span>
+      <span class="sec-name">Experience</span>
+    </div>
+    <span class="sec-note">— 9+ years · most recent first</span>
+  </div>
+  <div class="exp-timeline">
+
+    <div class="role-card r-current">
+      <div class="role-head">
+        <div class="role-org">Microsoft</div>
+        <div class="role-dates current">Feb 2023 — Present</div>
+      </div>
+      <div class="role-title">Technical Lead</div>
+      <ul class="role-bullets">
+        <li><b>Architected and optimized APIs</b> in .NET Core, integrated with <b>Python/Flask microservices</b> for real-time data processing.</li>
+        <li><b>Automated data validation workflows</b> with Python — reduced error rates by <b>~25%</b> and saved <b>~10 hours weekly</b> of manual effort.</li>
+        <li>Built single-page applications in <b>Angular 16</b> with TypeScript, Kendo UI, and responsive Bootstrap layouts.</li>
+        <li>Designed and delivered <b>microservices on .NET Core 8</b> with Web API, Entity Framework Core, and repository patterns.</li>
+        <li>Implemented Azure-native capabilities: <b>Functions, Key Vault, Logic Apps</b>, and AKS for scalable deployment.</li>
+        <li>Owned <b>CI/CD pipelines</b> via Azure DevOps + Docker; enforced quality gates and automated regression.</li>
+        <li>Wrote complex T-SQL (stored procs, views, functions, triggers) across SQL Server and MongoDB.</li>
+        <li>Led peer review of design, code, and automated tests; coordinated between customers, design, and PM teams.</li>
+      </ul>
+      <div class="role-stack">
+        <span class="role-stack-label">Stack</span>
+        <span class="stack-chip">.NET Core 8 / 3.1</span>
+        <span class="stack-chip">C# 9</span>
+        <span class="stack-chip">Angular 16</span>
+        <span class="stack-chip">Python / Flask</span>
+        <span class="stack-chip">Web API</span>
+        <span class="stack-chip">Azure AKS</span>
+        <span class="stack-chip">Azure Functions</span>
+        <span class="stack-chip">Azure DevOps</span>
+        <span class="stack-chip">Docker</span>
+        <span class="stack-chip">Kendo UI</span>
+      </div>
+    </div>
+
+    <div class="role-card r-violet">
+      <div class="role-head">
+        <div class="role-org">Persistent Systems</div>
+        <div class="role-dates">Nov 2021 — Dec 2022</div>
+      </div>
+      <div class="role-title">Technical Lead</div>
+      <ul class="role-bullets">
+        <li>Led system specification workshops and requirements analysis; coordinated developers across the full SDLC under <b>Agile Scrum</b> with TDD.</li>
+        <li>Built <b>Angular 14 SPAs</b> with Kendo components; enhanced MVC + Web API services based on evolving client requirements.</li>
+        <li>Implemented <b>SOA integration</b>, consuming REST services; drove microservices adoption across the platform.</li>
+        <li>Owned CI/CD via Azure DevOps; maintained code quality with <b>SonarQube</b> and application security with <b>Fortify</b>.</li>
+        <li>Designed and developed booking and contracting engine in C# with <b>multithreading, serialization, and caching</b> for high throughput.</li>
+        <li>Optimised SQL Server 2017 performance — stored procedures, indexes, views; supported MongoDB alongside.</li>
+        <li>Tracked work via TFS, linking code check-ins to work items for traceability.</li>
+      </ul>
+      <div class="role-stack">
+        <span class="role-stack-label">Stack</span>
+        <span class="stack-chip">.NET Core 3.1</span>
+        <span class="stack-chip">C# 6</span>
+        <span class="stack-chip">Angular 7 / 14</span>
+        <span class="stack-chip">WPF</span>
+        <span class="stack-chip">MVC 5 / Web API</span>
+        <span class="stack-chip">SQL Server 2017</span>
+        <span class="stack-chip">MongoDB</span>
+        <span class="stack-chip">Azure DevOps</span>
+        <span class="stack-chip">SonarQube</span>
+        <span class="stack-chip">Fortify</span>
+      </div>
+    </div>
+
+    <div class="role-card r-cyan">
+      <div class="role-head">
+        <div class="role-org">HCL</div>
+        <div class="role-dates">Apr 2020 — Jul 2021</div>
+      </div>
+      <div class="role-title">Technical Lead</div>
+      <ul class="role-bullets">
+        <li>Delivered applications under <b>Agile Scrum with TDD</b>; built SOA integration using <b>WCF and REST</b> services.</li>
+        <li>Enhanced WPF/MVC applications with Angular.js, jQuery, Bootstrap, and <b>Telerik Kendo Ajax controls</b>.</li>
+        <li>Designed <b>N-tier architecture</b> with Entity Framework, WCF, and Web API; built responsive UIs in ASP.NET, HTML5, CSS3.</li>
+        <li>Used multithreading and serialization for efficient XML dataset transfer; applied caching to improve user response times.</li>
+        <li>Developed <b>SSRS reports</b> and multi-stage <b>SSIS transformations</b> (Data Conversion, Conditional Split, Bulk Insert, Lookup, Merge).</li>
+        <li>Built Business Logic and Data Access layers under the MVC pattern; linked SharePoint-tracked issues to TFS work items.</li>
+      </ul>
+      <div class="role-stack">
+        <span class="role-stack-label">Stack</span>
+        <span class="stack-chip">.NET 4.7.2</span>
+        <span class="stack-chip">C# 4</span>
+        <span class="stack-chip">MVC 5</span>
+        <span class="stack-chip">Angular JS</span>
+        <span class="stack-chip">WCF</span>
+        <span class="stack-chip">WPF</span>
+        <span class="stack-chip">Entity Framework 4</span>
+        <span class="stack-chip">SSRS / SSIS</span>
+        <span class="stack-chip">SQL Server 2017</span>
+      </div>
+    </div>
+
+    <div class="role-card r-green">
+      <div class="role-head">
+        <div class="role-org">ADP</div>
+        <div class="role-dates">Aug 2019 — Jan 2020</div>
+      </div>
+      <div class="role-title">Technical Lead</div>
+      <ul class="role-bullets">
+        <li>Built presentation layer with <b>ASP.NET Web Forms and MVC 2.0</b> using the Razor engine.</li>
+        <li>Created and consumed <b>WCF (SOAP/WSDL)</b> and RESTful Web API services under SOA architecture.</li>
+        <li>Implemented Data Access and Business Logic layers in C#.NET with SQL Server 2008R2.</li>
+        <li>Built Entity Framework object model with LINQ/lambda for CRUD and search operations; integrated ASMX services with AJAX client callbacks for performance.</li>
+        <li>Developed stored procedures, triggers, cursors, views, and UDFs for core business logic.</li>
+        <li>Integrated <b>SSRS reporting</b> with ASP.NET applications; used DevExpress controls for enhanced UI.</li>
+      </ul>
+      <div class="role-stack">
+        <span class="role-stack-label">Stack</span>
+        <span class="stack-chip">ASP.NET MVC 2.0</span>
+        <span class="stack-chip">C# / VB.NET</span>
+        <span class="stack-chip">Entity Framework</span>
+        <span class="stack-chip">WCF / ASMX</span>
+        <span class="stack-chip">LINQ</span>
+        <span class="stack-chip">SQL Server 2008R2</span>
+        <span class="stack-chip">DevExpress</span>
+      </div>
+    </div>
+
+    <div class="role-card r-rose">
+      <div class="role-head">
+        <div class="role-org">Accenture</div>
+        <div class="role-dates">Jun 2014 — Feb 2019</div>
+      </div>
+      <div class="role-title">Application Development Analyst</div>
+      <ul class="role-bullets">
+        <li>Built web applications in <b>ASP.NET MVC 3.0/4.0</b>; designed UI with Web Server Controls and DevExpress components.</li>
+        <li>Developed <b>N-tier payment processing applications</b> using agile methodology.</li>
+        <li>Used <b>WPF, XAML, WinForms, and Entity Framework</b> for claims history and payment history modules.</li>
+        <li>Built WCF service layer to retrieve customer payment details; implemented SOAP communication between applications.</li>
+        <li>Integrated <b>MQSeries</b> for batch queue processing; implemented XML messaging over MQ.</li>
+        <li>Translated product requirements into UI via conceptual models, wireframes, and prototypes.</li>
+        <li>Migrated legacy code from .NET 1.1 to 4.0; converted ColdFusion projects to .NET.</li>
+        <li>Leveraged asynchronous programming for long-running tasks; built SSRS reports.</li>
+      </ul>
+      <div class="role-stack">
+        <span class="role-stack-label">Stack</span>
+        <span class="stack-chip">.NET Framework 4.0</span>
+        <span class="stack-chip">C# / VB.NET</span>
+        <span class="stack-chip">MVC 3 / 4</span>
+        <span class="stack-chip">WPF</span>
+        <span class="stack-chip">ADO.NET</span>
+        <span class="stack-chip">WCF / ASMX</span>
+        <span class="stack-chip">Knockout.js</span>
+        <span class="stack-chip">SSRS</span>
+        <span class="stack-chip">MQSeries</span>
+        <span class="stack-chip">DevExpress</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- § 5 EDUCATION -->
+<section class="block">
+  <div class="block-head">
+    <div class="block-title">
+      <span class="sec-num">§ 5</span>
+      <span class="sec-name">Education</span>
+    </div>
+    <span class="sec-note">— formal qualifications</span>
+  </div>
+  <div class="edu">
+    <div class="edu-box">
+      <div class="edu-degree">Bachelor of Engineering</div>
+      <div class="edu-inst">MGM's College of Engineering, Nanded · SRTMUN University, India</div>
+      <div class="edu-meta">Mar 2010 — Mar 2014</div>
+    </div>
+    <div class="edu-box" style="border-left-color: var(--gold);">
+      <div class="edu-degree" style="color: var(--gold);">Continuous Learning</div>
+      <div class="edu-inst" style="font-size: 11px; line-height: 1.6;">Ongoing specialization across Azure cloud services, Python data tooling, LLM orchestration, and modern front-end frameworks — self-directed, applied on production systems and open-source projects.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h3>How I Work</h3>
+  <div class="principle"><span>▸</span><span><b>Quality is upstream.</b> TDD, peer review, static analysis, and security scanning before anything reaches production. SonarQube and Fortify are part of the workflow, not an audit afterthought.</span></div>
+  <div class="principle"><span>▸</span><span><b>Stack pragmatism.</b> The right tool for the job — .NET for enterprise backends, Python for data and rapid microservices, Angular for rich front-ends. Integration over ideology.</span></div>
+  <div class="principle"><span>▸</span><span><b>Own the lifecycle.</b> From requirements and architecture through CI/CD deployment, observability, and bug triage. Shipping is a discipline, not a milestone.</span></div>
+  <div class="principle"><span>▸</span><span><b>Lead through clarity.</b> Clean design docs, diagrams, and specs reduce friction. Teams move faster when the intent is unambiguous.</span></div>
+</footer>
+
+</div>
+</body>
+</html>

@@ -19,6 +19,18 @@ const Contact = () => {
                   azhar.s786s@gmail.com
                 </a>
               </p>
+              <h4>Phone</h4>
+              <p>
+                <a href="tel:+917396328975" data-cursor="disable">
+                  +91 73963 28975
+                </a>
+              </p>
+              <h4>LinkedIn</h4>
+              <p>
+                <a href="https://www.linkedin.com/in/azhar-shaikh-32689610b/" target="_blank" rel="noopener noreferrer" data-cursor="disable">
+                  azhar-shaikh
+                </a>
+              </p>
               <h4>Education</h4>
               <p>Bachelor of Engineering, MGM's COE, Nanded</p>
             </div>

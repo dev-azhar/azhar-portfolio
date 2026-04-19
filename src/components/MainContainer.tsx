@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
+import GitProjects from "./GitProjects";
 import Hobbies from "./Hobbies";
 import Domains from "./Domains";
 import setSplitText from "./utils/splitText";
@@ -46,6 +47,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
             <Career />
             <Domains />
             <Work />
+            <GitProjects />
             <Hobbies />
             <Suspense fallback={<div>Loading....</div>}>
               <TechStack />
