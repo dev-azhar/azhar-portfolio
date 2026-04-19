@@ -85,9 +85,12 @@ const aiTextTextures = [
 
 const textures = [...imageTextures, ...aiTextTextures];
 
-const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
+const isMobile = window.innerWidth <= 1024;
 
-const spheres = [...Array(36)].map(() => ({
+const sphereGeometry = new THREE.SphereGeometry(1, isMobile ? 16 : 28, isMobile ? 16 : 28);
+
+const sphereCount = isMobile ? 18 : 36;
+const spheres = [...Array(sphereCount)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
 
@@ -245,9 +248,10 @@ const TechStack = () => {
       <h2> My Techstack</h2>
 
       <Canvas
-        shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
+        shadows={!isMobile}
+        gl={{ alpha: true, stencil: false, depth: false, antialias: !isMobile }}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
+        dpr={isMobile ? [1, 1.5] : [1, 2]}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
         className="tech-canvas"
       >
@@ -257,7 +261,7 @@ const TechStack = () => {
           penumbra={1}
           angle={0.2}
           color="white"
-          castShadow
+          castShadow={!isMobile}
           shadow-mapSize={[512, 512]}
         />
         <directionalLight position={[0, 5, -4]} intensity={2} />
@@ -277,9 +281,11 @@ const TechStack = () => {
           environmentIntensity={0.5}
           environmentRotation={[0, 4, 2]}
         />
-        <EffectComposer enableNormalPass={false}>
-          <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
-        </EffectComposer>
+        {!isMobile && (
+          <EffectComposer enableNormalPass={false}>
+            <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
+          </EffectComposer>
+        )}
       </Canvas>
     </div>
   );
